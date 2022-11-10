@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-// Reply 报告单, 只包含检查的结果和状态
+// Reply 应答, 只包含发起检查的状态
 type Reply struct {
 	Status int `json:"status" bson:"status"` // 调用成功 1
 }
@@ -28,7 +28,6 @@ func (c CheckClient) CallCheckAsync(user string, checkType string) (Reply, error
 }
 
 func (c CheckClient) CallCheckSync(user string, checkType string) (Reply, error) {
-	// TODO 远程调用 check_work , 发送rpc or http
 	c.user = user
 	c.checkType = checkType
 	c.isSync = 1
@@ -45,6 +44,7 @@ func (c CheckClient) callCheckHandler() (Reply, error) {
 		return Reply{Status: 0}, errors.New("检查项标识不能为空")
 	}
 	// 2. 服务发现 c.address
+	// 远程调用 check_work , 发送rpc or http
 	url := c.Address + "/xk-api/checkwork/do?user=" + c.user + "&" + "check_type=" + c.checkType + "is_sync=" + fmt.Sprintf("%d", c.isSync)
 	client := &http.Client{}
 	//提交请求
