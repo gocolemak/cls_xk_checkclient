@@ -13,21 +13,21 @@ type ReportContent struct {
 	Status int `json:"status" bson:"status"` // 调用成功 1
 }
 
-type Check struct {
+type CheckClient struct {
 	Address   string
 	user      string
 	checkType string
 	isSync    int
 }
 
-func (c Check) CallCheckAsync(user string, checkType string) (ReportContent, error) {
+func (c CheckClient) CallCheckAsync(user string, checkType string) (ReportContent, error) {
 	c.user = user
 	c.checkType = checkType
 	c.isSync = 0
 	return c.callCheckHandler()
 }
 
-func (c Check) CallCheckSync(user string, checkType string) (ReportContent, error) {
+func (c CheckClient) CallCheckSync(user string, checkType string) (ReportContent, error) {
 	// TODO 远程调用 check_work , 发送rpc or http
 	c.user = user
 	c.checkType = checkType
@@ -35,7 +35,7 @@ func (c Check) CallCheckSync(user string, checkType string) (ReportContent, erro
 	return c.callCheckHandler()
 }
 
-func (c Check) callCheckHandler() (ReportContent, error) {
+func (c CheckClient) callCheckHandler() (ReportContent, error) {
 	// 1. 参数校验并解析
 	// 1.1 判空,不支持为空, 为空则直接返回
 	if c.user == "" {
