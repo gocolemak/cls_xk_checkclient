@@ -6,7 +6,7 @@ type ReportContent struct {
 }
 
 type Check struct {
-	address string
+	Address string
 }
 
 func (c Check) CallCheckAsync(user string, check_type string) ReportContent {
