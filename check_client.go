@@ -1,4 +1,4 @@
-package cls_xk_checkclient
+package cls_xk_checkclientv3
 
 // ReportContent 报告单, 只包含检查的结果和状态
 type ReportContent struct {

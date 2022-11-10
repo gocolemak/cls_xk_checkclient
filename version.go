@@ -1,4 +1,4 @@
-package cls_xk_checkclient
+package cls_xk_checkclientv3
 
 // Version is the current release version.
 func Version() string {
