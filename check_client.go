@@ -45,7 +45,7 @@ func (c CheckClient) callCheckHandler() (Reply, error) {
 	}
 	// 2. 服务发现 c.address
 	// 远程调用 check_work , 发送rpc or http
-	url := c.Address + "/xk-api/checkwork/do?user=" + c.user + "&" + "check_type=" + c.checkType + "is_sync=" + fmt.Sprintf("%d", c.isSync)
+	url := "http://" + c.Address + "/xk-api/checkwork/do?user=" + c.user + "&check_type=" + c.checkType + "&is_sync=" + fmt.Sprintf("%d", c.isSync)
 	client := &http.Client{}
 	//提交请求
 	reqest, err := http.NewRequest("GET", url, nil)
