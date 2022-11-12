@@ -13,6 +13,7 @@ type Reply struct {
 	Status int `json:"status" bson:"status"` // 调用成功 1
 }
 
+// CheckClient 客户端类
 type CheckClient struct {
 	Address   string
 	user      int
