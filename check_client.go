@@ -1,4 +1,4 @@
-package cls_xk_checkclient
+package xk_check_sdk
 
 import (
 	"encoding/json"
