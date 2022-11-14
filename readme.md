@@ -1,3 +1,1 @@
-cls_xk_checkclient
 
-检查客户端
